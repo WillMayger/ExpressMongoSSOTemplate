@@ -1,0 +1,570 @@
+<html>
+
+<head>
+  <title>
+    Login
+  </title>
+  <link href="https://cf.eip.telegraph.co.uk/assets/_css/fontsv03.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="spark-video-container" id="spark-video-container">
+    <div class="header">
+      <img src="/tmglogo.svg" alt="telegraph media group" />
+      <h1>
+        Spark AMP CMS
+      </h1>
+    </div>
+    <div class="login">
+      <div id="clickable" class="login-section">
+        <div class="inner">
+          Login.
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('clickable').addEventListener('click', () => {
+      window.location = 'api/auth/google'
+    });
+  </script>
+  <style>
+    input[type="text"] {
+      width: 100%;
+      line-height: 4rem;
+      font-size: 2rem;
+      font-weight: 100;
+      border-radius: 20px;
+      border: 2px solid #46dfba;
+      padding-left: 50px;
+      padding-right: 50px;
+      color: #333;
+      transition: 0.3s all;
+      color: #37b29b;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+    }
+
+    .code {
+      margin: 0 auto;
+      padding: 20px;
+      display: block;
+      font-size: 1rem;
+      line-height: 1.4rem;
+      height: 600px;
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-radius: 5px;
+      border: 0;
+      color: #fff;
+      transition: 0.3s all;
+      resize: none;
+      margin-top: 20px;
+      padding-top: 0;
+    }
+
+    .code:focus {
+      outline: none;
+    }
+
+    input[type="checkbox"] {
+      vertical-align: middle;
+      font-size: 1.8rem;
+      line-height: 2rem;
+      margin-right: 10px;
+      position: relative;
+      top: -1px;
+    }
+
+    label,
+    .label {
+      font-size: 2.1rem;
+      line-height: 2.2rem;
+      color: #333;
+      padding: 15px 2px 10px;
+      text-align: left;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (min-height: 633px) {
+
+      label,
+      .label {
+        padding: 30px 2px 10px;
+      }
+    }
+
+    label.center,
+    .label.center {
+      text-align: center;
+    }
+
+    label.checkbox,
+    .label.checkbox {
+      font-size: 1.8rem;
+      line-height: 2rem;
+      color: #333;
+      vertical-align: middle;
+      padding: 20px 0 10px;
+      text-align: left;
+      width: 33.333333%;
+      display: inline-block;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    button {
+      color: #fff;
+      line-height: 45px;
+      font-size: 1.7rem;
+      text-transform: uppercase;
+      font-weight: 100;
+      max-width: 250px;
+      width: 100%;
+      display: block;
+      margin: 20px auto 0;
+      border-radius: 25px;
+      transition: 0.5s all;
+      cursor: pointer;
+      border: 0;
+      background: #37b29b;
+    }
+
+    @media (min-height: 633px) {
+      button {
+        margin: 35px auto 0;
+      }
+    }
+
+    button.delete {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      background: #d83450;
+      padding: 0;
+    }
+
+    button.delete a {
+      display: block;
+      color: inherit;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    button:hover {
+      background: #5b7772;
+    }
+
+    body {
+      display: block;
+      margin: 0 auto;
+      overflow-x: hidden;
+      font-size: 10px;
+      width: 100%;
+    }
+
+    html {
+      font-size: 10px;
+    }
+
+    .spark-video-container {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    .spark-video-container * {
+      font-family: 'Austin News Text Roman' !important;
+    }
+
+    .spark-video-container .holiday-button {
+      position: fixed;
+      z-index: 5;
+      top: 30px;
+      right: 30px;
+      transition: 0.5s all;
+      height: 80px;
+      width: 80px;
+      cursor: pointer;
+      animation: pulse 1s infinite;
+    }
+
+    .spark-video-container .holiday-button img {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .spark-video-container .holiday-button:hover {
+      animation: none;
+      transform: scale(0.9);
+    }
+
+    .spark-video-container #holiday-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0;
+      transition: 0.5s all;
+    }
+
+    .spark-video-container #holiday-canvas.show {
+      opacity: 1;
+    }
+
+    .spark-video-container .plus-svg,
+    .spark-video-container .search-svg,
+    .spark-video-container .logout-svg {
+      color: #46dfba;
+      height: 18px;
+      width: 18px;
+    }
+
+    .spark-video-container a {
+      text-decoration: none;
+    }
+
+    .spark-video-container .overlay {
+      pointer-events: none;
+      position: fixed;
+      top: 0px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      background: #000;
+      opacity: 0;
+      transition: 0.8s all;
+    }
+
+    .spark-video-container .overlay.success,
+    .spark-video-container .overlay.error {
+      background: green;
+      transition: 0.5s all;
+    }
+
+    .spark-video-container .overlay.error {
+      background: red;
+    }
+
+    .spark-video-container .overlay svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 30%;
+      width: auto;
+      transform: translateY(-50%) translateX(-50%);
+    }
+
+    .spark-video-container .overlay.active {
+      opacity: 0.5;
+      cursor: auto;
+      pointer-events: auto;
+    }
+
+    .spark-video-container .overlay.active.success,
+    .spark-video-container .overlay.active.error {
+      opacity: 1;
+    }
+
+    .spark-video-container .overlay.full {
+      opacity: 0.8;
+      cursor: auto;
+      pointer-events: auto;
+    }
+
+    .spark-video-container * {
+      box-sizing: border-box;
+      font-family: 'Austin News Deck';
+      font-family: arial;
+    }
+
+    .spark-video-container P {
+      font-family: 'Austin News Deck Roman';
+      font-family: arial;
+    }
+
+    .spark-video-container h1,
+    .spark-video-container h2,
+    .spark-video-container h3,
+    .spark-video-container h4,
+    .spark-video-container h5 {
+      font-family: 'Austin News Deck';
+      font-family: arial;
+      font-weight: 400;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(0.9);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .header h1 {
+      margin: 0 auto;
+      margin-left: 0;
+      font-size: 3.1rem;
+      color: #46dfba;
+      line-height: 3.1rem;
+      display: inline-block;
+      vertical-align: middle;
+      padding-bottom: 40px;
+    }
+
+    .header .breadcrumbs {
+      margin: 0 auto;
+      margin-left: 0;
+      font-size: 1.4rem;
+      color: #333;
+      line-height: 1.4rem;
+      display: inline-block;
+      vertical-align: middle;
+      width: 50%;
+    }
+
+    @media (min-width: 855px) {
+      .header .breadcrumbs {
+        width: 55%;
+      }
+    }
+
+    .header .breadcrumbs a {
+      padding: 0 10px;
+      color: #00a287;
+    }
+
+    .header h5 {
+      margin: 0 auto;
+      margin-right: 0;
+      display: inline-block;
+      font-size: 1.4rem;
+      text-align: right;
+      line-height: 3rem;
+      margin-bottom: 0;
+      vertical-align: middle;
+      width: 40%;
+      color: #8A8A8E;
+    }
+
+    @media (min-width: 855px) {
+      .header h5 {
+        width: 30%;
+      }
+    }
+
+    .header h5 a {
+      color: #00a287;
+      cursor: pointer;
+      padding: 0 7px;
+    }
+
+    .header {
+      position: relative;
+      background-color: #062331;
+      width: 100%;
+      text-align: center;
+      padding: 40px 0 0 0;
+    }
+
+    .header h1 a {
+      position: relative;
+      z-index: 5;
+      color: inherit;
+      font-family: 'Austin News Text Roman';
+    }
+
+    .header img {
+      display: block;
+      margin: 10px auto;
+      max-width: 210px;
+      width: 100%;
+    }
+
+    .header .cta-header {
+      background: #0c2e3e;
+      width: 100%;
+      text-align: center;
+      vertical-align: middle;
+      padding: calc((108px - 44px) / 2) 20px;
+      position: relative;
+    }
+
+    .header .cta-header .display-search {
+      pointer-events: none;
+      opacity: 0;
+      transition: 0.5s all;
+    }
+
+    .header .cta-header .display-search .close-svg {
+      position: absolute;
+      top: 50%;
+      right: 100px;
+      transform: translateY(-50%);
+      max-width: 26px;
+      width: 100%;
+      z-index: 5;
+    }
+
+    .header .cta-header .display-search.show {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .header .cta-header a {
+      text-align: center;
+      vertical-align: middle;
+      width: 90px;
+      height: 44px;
+      line-height: 44px;
+      display: inline-block;
+      border: 1px solid #46dfba;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 2rem;
+      margin: 0 7px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h1 {
+      margin: 0 auto;
+      margin-left: 0;
+      font-size: 3.1rem;
+      color: #46dfba;
+      line-height: 3.1rem;
+      display: inline-block;
+      vertical-align: middle;
+      padding-bottom: 40px;
+    }
+
+    .header .breadcrumbs {
+      margin: 0 auto;
+      margin-left: 0;
+      font-size: 1.4rem;
+      color: #333;
+      line-height: 1.4rem;
+      display: inline-block;
+      vertical-align: middle;
+      width: 50%;
+    }
+
+    @media (min-width: 855px) {
+      .header .breadcrumbs {
+        width: 55%;
+      }
+    }
+
+    .header .breadcrumbs a {
+      padding: 0 10px;
+      color: #00a287;
+    }
+
+    .header h5 {
+      margin: 0 auto;
+      margin-right: 0;
+      display: inline-block;
+      font-size: 1.4rem;
+      text-align: right;
+      line-height: 3rem;
+      margin-bottom: 0;
+      vertical-align: middle;
+      width: 40%;
+      color: #8A8A8E;
+    }
+
+    @media (min-width: 855px) {
+      .header h5 {
+        width: 30%;
+      }
+    }
+
+    .header h5 a {
+      color: #00a287;
+      cursor: pointer;
+      padding: 0 7px;
+    }
+
+    .login .login-section {
+      width: 80%;
+      max-width: 250px;
+      max-height: 250px;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%) scale(1);
+      height: 50%;
+      border-bottom: 3px solid #e4e4e4;
+      border-radius: 10px;
+      background: #37b29b;
+      height: 300px;
+      width: 100%;
+      transition: 0.25s all;
+      font-size: 2.4rem;
+      line-height: 250px;
+      cursor: pointer;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .login .login-section * {
+      font-size: 2.4rem;
+      line-height: 250px;
+      vertical-align: middle;
+      color: #fff;
+    }
+
+    .login .login-section:hover {
+      transform: translateY(-50%) translateX(-50%) scale(0.95);
+    }
+
+    .login .login-section:focus {
+      outline: none;
+    }
+
+    .login .login-section .inner {
+      display: block;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      box-sizing: border-box;
+      padding: 0px;
+    }
+
+    .login .login-section .inner img {
+      display: none;
+    }
+
+    .login .login-section .inner:hover,
+    .login .login-section .inner:focus,
+    .login .login-section .inner:visited,
+    .login .login-section .inner:active,
+    .login .login-section .inner:focus-within {
+      outline: none;
+    }
+  </style>
+</body>
+
+</html>

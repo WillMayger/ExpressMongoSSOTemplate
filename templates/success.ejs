@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>
+      Success!
+    </title>
+  </head>
+  <body>
+    <h1>Login Successful, this is now working!</h1>
+
+    <button>Add in new database entry</button>
+    <% if (data.length <= 0) { %>
+      <p>Click the button to add in a new example!</p>
+    <% } else { %>
+    <p style="font-size: 16px;">Here are all the examples in your database:</p>
+    <% } %>
+    <div class="examples"></div>
+      
+      <p style="font-size: 12px;">This is using the ejs templating framework!</p>
+      <script>
+        (() => {
+
+          // To update without refreshing the page
+          const updateExamples = () => fetch('/getExamples').then(res => (res.text())).then((res) => {
+            const examples = document.getElementsByClassName('examples')[0];
+            examples.innerHTML = res;
+          });
+
+          const button = document.getElementsByTagName('button')[0];
+          button.addEventListener('click', () => {
+
+            // Make POST request to api to create new example
+            fetch(
+              '/api/example',
+              {
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ test: 'An Example!' }),
+              },
+              ).then((res) => {
+                // update examples on page
+                updateExamples();
+              });
+          });
+
+          // Init page with examples
+          updateExamples();
+        })();
+      </script>
+  </body>
+</html>
